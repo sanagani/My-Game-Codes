@@ -1,23 +1,35 @@
-var sprite
+var btn_red;
+var btn_green;
+
+var r = 0;
+var g = 0;
+var b = 0;
 
 function setup() {
-  createCanvas(400,400);
-  sprite = createSprite(200,200,20,20); 
+  createCanvas(400, 400);  
+  btn_red.createButton("RED");
+  btn_red.position(100,50);
+  btn_red.mousePressed(red_bg);
+
+  btn_green = createButton("GREEN");
+  btn_green.position(250,50);
+  btn_green.mousePressed(green_bg);
 }
 
-function draw() 
+function red_bg()
 {
-  background(30);
-  drawSprites();
-  if(keyIsDown(RIGHT_ARROW)){
-    sprite.position.x= sprite.position.x+3;
-  }
-
-  if(keyIsDown(DOWN_ARROW)){
-    sprite.position.y=sprite.position.y+3;
-  }
+  r = 255;
+  g = 0;
+  b = 0;
 }
 
+function green_bg()
+{
+  r = 0;
+  g = 255;
+  b = 0;
+}
 
-
-
+function draw() {
+  background(r,g,b);
+}
